@@ -14,6 +14,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'feed.html',
 })
 export class FeedPage {
+  public object_feed = {
+    nome_usuario: "New User",
+    data_publicacao: "November 5, 1955",
+    image: "https://blog.emania.com.br/content/uploads/2015/12/paisagem-tropical-wallpaper-1.jpg",
+    likes: 10,
+  };  
+
   public nome_usuario:string = "New User";
   public data_publicacao:string = "November 5, 1955";
   public image:string = "https://blog.emania.com.br/content/uploads/2015/12/paisagem-tropical-wallpaper-1.jpg";

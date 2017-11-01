@@ -18,13 +18,13 @@
 
     <ion-item>
       <ion-avatar item-start>
-        <img [src]=" image " >
+        <img [src]=" object_feed.image " >
       </ion-avatar>
-      <h2 class="feed_title">{{ nome_usuario }}</h2>
-      <p>{{ data_publicacao }}</p>
+      <h2 class="feed_title">{{ object_feed.nome_usuario }}</h2>
+      <p>{{ object_feed.data_publicacao }}</p>
     </ion-item>
 
-    <img [src]=" image " >
+    <img [src]=" object_feed.image " >
 
     <ion-card-content>
       <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
@@ -35,7 +35,7 @@
       <ion-col>
         <button ion-button icon-left clear small (click)="newLike()">
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>{{ likes }} Likes</div>
+          <div>{{ object_feed.likes }} Likes</div>
         </button>
       </ion-col>
       <ion-col>
