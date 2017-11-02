@@ -13,35 +13,37 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-card>
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content refreshingtext="Refreshing..."></ion-refresher-content>
+    </ion-refresher>
+  <ion-card *ngFor="let item of lista_filmes" >
 
     <ion-item>
       <ion-avatar item-start>
-        <img [src]=" object_feed.image " >
+        <img [src]="'https://image.tmdb.org/t/p/w500/' + item.backdrop_path " >
       </ion-avatar>
-      <h2 class="feed_title">{{ object_feed.nome_usuario }}</h2>
-      <p>{{ object_feed.data_publicacao }}</p>
+      <h2 class="feed_title">{{ item.original_title }}</h2>
+      <p>{{ item.release_date }}</p>
     </ion-item>
 
-    <img [src]=" object_feed.image " >
+    <img [src]="'https://image.tmdb.org/t/p/w500/' + item.backdrop_path " >
 
     <ion-card-content>
-      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
-        Whoa. This is heavy.</p>
+      <p>{{ item.overview }}</p>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
-        <button ion-button icon-left clear small (click)="newLike()">
+        <button ion-button icon-left clear small>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>{{ object_feed.likes }} Likes</div>
+          <div>{{ item.vote_count }} Votes</div>
         </button>
       </ion-col>
       <ion-col>
         <button ion-button icon-left clear small>
           <ion-icon name="text"></ion-icon>
-          <div>4 Comments</div>
+          <div>{{ item.popularity }} Popularity</div>
         </button>
       </ion-col>
       <ion-col center text-center>
@@ -50,9 +52,11 @@
         </ion-note>
       </ion-col>
     </ion-row>
-
+    <button ion-button block (click)="abrirDetalhes(item)">Detalhes</button>
   </ion-card>
 
-  
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
   
 </ion-content>
